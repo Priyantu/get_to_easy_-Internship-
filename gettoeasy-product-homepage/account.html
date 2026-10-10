@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Login / Registration | Get To Easy</title>
+  <style>
+    :root { --green: #19b298; --line: #e2e7e9; --text: #222; --muted: #70777c; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #f4f6f8; color: var(--text); font-family: Arial, sans-serif; line-height: 1.5; }
+    header { padding: 22px 18px; background: #fff; border-bottom: 1px solid var(--line); text-align: center; }
+    header h1 { margin: 0; font-size: 2rem; }
+    nav { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+    nav a { padding: 8px 16px; border: 1px solid var(--line); border-radius: 999px; color: inherit; font-weight: 600; text-decoration: none; }
+    nav a:hover { border-color: var(--green); color: #087966; }
+    main { width: min(520px, calc(100% - 28px)); margin: 38px auto; padding: 28px; border: 1px solid var(--line); border-radius: 14px; background: #fff; }
+    h2 { margin-top: 0; }
+    .notice { padding: 12px 14px; border-radius: 8px; background: #e6f7f3; color: #31534c; }
+    .tabs { display: flex; gap: 10px; margin: 22px 0; }
+    .tabs button, form button { padding: 11px 16px; border: 0; border-radius: 8px; background: var(--green); color: #fff; font-size: 1rem; font-weight: 700; cursor: pointer; }
+    .tabs button { flex: 1; background: #eef2f3; color: var(--text); }
+    .tabs button[aria-selected="true"] { background: var(--green); color: #fff; }
+    label { display: block; margin: 14px 0 6px; font-weight: 600; }
+    input { width: 100%; padding: 12px; border: 1px solid #cfd8db; border-radius: 7px; font: inherit; }
+    form button { width: 100%; margin-top: 20px; }
+    [hidden] { display: none !important; }
+    #form-status { margin-bottom: 0; color: #087966; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Get To Easy</h1>
+    <nav aria-label="Main navigation">
+      <a href="../gettoeasy-assets/homepage.html">Home</a>
+      <a href="shop.html">All Products</a>
+      <a href="help.html">Customer Care</a>
+    </nav>
+  </header>
+  <main>
+    <h2>Account</h2>
+    <p class="notice">This is a local demo. There is no account server, so credentials are not sent or saved.</p>
+    <div class="tabs" role="tablist" aria-label="Account actions">
+      <button id="login-tab" type="button" role="tab" aria-selected="true" aria-controls="login-form">Login</button>
+      <button id="register-tab" type="button" role="tab" aria-selected="false" aria-controls="register-form">Registration</button>
+    </div>
+    <form id="login-form">
+      <label for="login-email">Email or phone</label>
+      <input id="login-email" name="email" autocomplete="username" required>
+      <label for="login-password">Password</label>
+      <input id="login-password" name="password" type="password" autocomplete="current-password" required>
+      <button type="submit">Login</button>
+    </form>
+    <form id="register-form" hidden>
+      <label for="register-name">Name</label>
+      <input id="register-name" name="name" autocomplete="name" required>
+      <label for="register-email">Email or phone</label>
+      <input id="register-email" name="email" autocomplete="email" required>
+      <label for="register-password">Create password</label>
+      <input id="register-password" name="password" type="password" autocomplete="new-password" required>
+      <button type="submit">Create account</button>
+    </form>
+    <p id="form-status" role="status" aria-live="polite"></p>
+  </main>
+  <script>
+    const loginTab = document.getElementById('login-tab');
+    const registerTab = document.getElementById('register-tab');
+    const loginForm = document.getElementById('login-form');
+    const registerForm = document.getElementById('register-form');
+    const status = document.getElementById('form-status');
+
+    function showForm(formName) {
+      const showLogin = formName === 'login';
+      loginForm.hidden = !showLogin;
+      registerForm.hidden = showLogin;
+      loginTab.setAttribute('aria-selected', String(showLogin));
+      registerTab.setAttribute('aria-selected', String(!showLogin));
+      status.textContent = '';
+    }
+
+    loginTab.addEventListener('click', () => showForm('login'));
+    registerTab.addEventListener('click', () => showForm('register'));
+    [loginForm, registerForm].forEach((form) => {
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        status.textContent = 'Account sign-in and registration require a backend and are unavailable in this local demo.';
+      });
+    });
+  </script>
+</body>
+</html>

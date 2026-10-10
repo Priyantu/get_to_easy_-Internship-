@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Shopping tips and product guides from Get To Easy.">
+  <title>Blog | Get To Easy</title>
+  <style>
+    :root {
+      --green: #19b298;
+      --green-dark: #0d8d7d;
+      --line: #e2e7e9;
+      --bg: #f4f6f8;
+      --text: #222;
+      --muted: #70777c;
+      --card: #fff;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+    }
+
+    a { color: inherit; }
+
+    .site-header {
+      padding: 22px 18px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      text-align: center;
+    }
+
+    .site-header h1 {
+      margin: 0;
+      font-size: clamp(1.8rem, 4vw, 2.4rem);
+    }
+
+    .site-nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .site-nav a {
+      padding: 8px 18px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: #fff;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .site-nav a:hover,
+    .site-nav a[aria-current="page"] {
+      border-color: var(--green);
+      background: var(--green);
+      color: #fff;
+    }
+
+    main {
+      width: min(1180px, calc(100% - 36px));
+      margin: 36px auto 56px;
+    }
+
+    .intro {
+      margin-bottom: 24px;
+      padding: 28px;
+      border-radius: 14px;
+      background: #e6f7f3;
+    }
+
+    .intro h2 {
+      margin: 0 0 8px;
+      font-size: clamp(1.7rem, 3vw, 2.3rem);
+    }
+
+    .intro p {
+      max-width: 680px;
+      margin: 0;
+      color: #42514e;
+    }
+
+    .post-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .post-card {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: var(--card);
+      box-shadow: 0 4px 16px rgba(20, 40, 36, 0.04);
+    }
+
+    .post-card img {
+      display: block;
+      width: 100%;
+      height: 220px;
+      padding: 14px;
+      background: #fff;
+      object-fit: contain;
+    }
+
+    .post-content { padding: 18px; }
+
+    .post-category {
+      color: var(--green-dark);
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .post-content h3 {
+      margin: 8px 0;
+      font-size: 1.2rem;
+      line-height: 1.4;
+    }
+
+    .post-content p,
+    .article p { color: var(--muted); }
+
+    .read-link {
+      display: inline-block;
+      margin-top: 4px;
+      color: var(--green-dark);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .read-link:hover { text-decoration: underline; }
+
+    .article-list {
+      display: grid;
+      gap: 18px;
+      margin-top: 32px;
+    }
+
+    .article {
+      scroll-margin-top: 20px;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: var(--card);
+    }
+
+    .article h2 { margin: 0 0 10px; }
+    .article p:last-child { margin-bottom: 0; }
+
+    @media (max-width: 850px) {
+      .post-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 560px) {
+      main { width: min(100% - 24px, 1180px); margin-top: 20px; }
+      .intro { padding: 22px; }
+      .post-grid { grid-template-columns: 1fr; }
+      .post-card img { height: 240px; }
+      .article { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <h1>Get To Easy</h1>
+    <nav class="site-nav" aria-label="Main navigation">
+      <a href="../gettoeasy-assets/homepage.html">Home</a>
+      <a href="shop.html">All Products</a>
+      <a href="shop.html?filter=sale">Flash Sales</a>
+      <a href="shop.html?filter=categories">All Categories</a>
+      <a href="blog.html" aria-current="page">Blog</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="intro">
+      <h2>Get To Easy Blog</h2>
+      <p>Explore practical shopping tips and simple product guides to help you make informed choices.</p>
+    </section>
+
+    <section class="post-grid" aria-label="Blog posts">
+      <article class="post-card">
+        <img src="images/9xh8YdCwhsD05YbYknBcCA2SLDdmWXS8MYHLjOxj.jpg" alt="Feature phone product" loading="lazy">
+        <div class="post-content">
+          <span class="post-category">Shopping Tips</span>
+          <h3>What to Check Before Buying a Feature Phone</h3>
+          <p>Compare the essentials before choosing a simple, everyday phone.</p>
+          <a class="read-link" href="#feature-phone-guide">Read article</a>
+        </div>
+      </article>
+
+      <article class="post-card">
+        <img src="images/3GghPx4sUS9YqiVVk4tfSUcbbI83qFwGK7yMBDFZ.jpg" alt="Samsung refrigerator" loading="lazy">
+        <div class="post-content">
+          <span class="post-category">Home Appliances</span>
+          <h3>A Quick Guide to Choosing a Refrigerator</h3>
+          <p>Think about capacity, available space, energy use, and after-sales support.</p>
+          <a class="read-link" href="#refrigerator-guide">Read article</a>
+        </div>
+      </article>
+
+      <article class="post-card">
+        <img src="images/6ZC0t1jwvXQvBXwsOSTV6iE09KhhCPXlK26AVhtX.jpg" alt="Children's clothing product" loading="lazy">
+        <div class="post-content">
+          <span class="post-category">Kids' Clothing</span>
+          <h3>Choosing Comfortable Clothes for Children</h3>
+          <p>Use size information, fabric details, and care instructions to compare options.</p>
+          <a class="read-link" href="#kids-clothing-guide">Read article</a>
+        </div>
+      </article>
+    </section>
+
+    <section class="article-list" aria-label="Articles">
+      <article class="article" id="feature-phone-guide">
+        <h2>What to Check Before Buying a Feature Phone</h2>
+        <p>Start by checking the features you will use most, such as battery life, keypad comfort, display readability, call quality, and storage. Compare the listed specifications and warranty information, and confirm what is included in the package before ordering.</p>
+      </article>
+
+      <article class="article" id="refrigerator-guide">
+        <h2>A Quick Guide to Choosing a Refrigerator</h2>
+        <p>Measure the space where the refrigerator will go and consider how much food your household stores. Compare usable capacity, energy information, cooling features, warranty coverage, and delivery requirements. Product specifications can vary, so review the details for the exact model you are considering.</p>
+      </article>
+
+      <article class="article" id="kids-clothing-guide">
+        <h2>Choosing Comfortable Clothes for Children</h2>
+        <p>Check the size chart and garment measurements instead of relying only on age labels. Consider fabric, fit, washing instructions, and the return policy. When shopping online, review product photos and descriptions carefully, since color and appearance may vary between screens.</p>
+      </article>
+    </section>
+  </main>
+</body>
+</html>

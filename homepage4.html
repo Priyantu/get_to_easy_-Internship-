@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Get To Easy Home</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --green: #19b298;
+      --green-dark: #0d8d7d;
+      --line: #dde3e6;
+      --bg: #f4f6f8;
+      --text: #222;
+      --muted: #8a8f94;
+      --card: #ffffff;
+      --danger: #ff3b30;
+      --star: #f5b301;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Arial, sans-serif;
+    }
+
+    .header-bar {
+      background: #f5f7f8;
+      border-bottom: 1px solid var(--line);
+      padding: 18px 0;
+    }
+
+    .home-shell {
+      max-width: 1400px;
+      margin: 18px auto 40px;
+      padding: 0 18px;
+    }
+
+    .section-wrap {
+      background: #f8f8f8;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 18px 18px 12px;
+      margin-bottom: 28px;
+      box-shadow: 0 1px 0 rgba(0,0,0,0.02);
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 12px;
+      margin-bottom: 18px;
+      border-bottom: 2px solid var(--green);
+    }
+
+    .section-head h2 {
+      margin: 0;
+      font-size: clamp(1.7rem, 2vw, 2.3rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .view-btn {
+      border: 0;
+      border-radius: 8px;
+      background: var(--green);
+      color: #fff;
+      padding: 12px 22px;
+      font-size: 1.05rem;
+      font-weight: 600;
+      box-shadow: 0 2px 8px rgba(25,178,152,0.2);
+    }
+
+    .view-btn:hover {
+      background: var(--green-dark);
+    }
+
+    .carousel {
+      position: relative;
+      overflow: hidden;
+      padding: 0 28px;
+    }
+
+    .track {
+      display: flex;
+      gap: 16px;
+      transition: transform 0.25s ease;
+      will-change: transform;
+    }
+
+    .card {
+      flex: 0 0 calc((100% - 64px) / 5);
+      min-width: 0;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: var(--card);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .image-box {
+      position: relative;
+      height: 255px;
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+    }
+
+    .image-box img {
+      width: 100%;
+      height: 100%;
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      display: block;
+      filter: drop-shadow(0 10px 8px rgba(0,0,0,0.08));
+    }
+
+    .badge-wrap {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      z-index: 2;
+    }
+
+    .off-badge,
+    .cod-badge,
+    .stock-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .off-badge {
+      background: var(--danger);
+      color: white;
+      width: 66px;
+      height: 34px;
+      font-size: 0.8rem;
+      padding: 0 12px;
+    }
+
+    .cod-badge {
+      background: var(--green);
+      color: white;
+      width: 46px;
+      height: 26px;
+      font-size: 0.66rem;
+    }
+
+    .stock-badge {
+      background: #eef1f2;
+      color: #3d4043;
+      padding: 8px 12px;
+      font-size: 0.72rem;
+      border: 1px solid #dfe5e7;
+    }
+
+    .info-box {
+      padding: 16px 14px 18px;
+      text-align: left;
+    }
+
+    .price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 8px;
+      flex-wrap: wrap;
+    }
+
+    .old-price {
+      color: #8b8f95;
+      text-decoration: line-through;
+      font-size: 0.98rem;
+      font-weight: 600;
+    }
+
+    .new-price {
+      color: var(--green);
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+
+    .stars {
+      color: var(--star);
+      letter-spacing: 2px;
+      margin-bottom: 10px;
+      font-size: 0.95rem;
+    }
+
+    .name {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.4;
+      min-height: 46px;
+    }
+
+    .arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 42px;
+      height: 42px;
+      border: 1px solid #d7dfe2;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.92);
+      color: #3d4043;
+      font-size: 2rem;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      z-index: 9;
+      cursor: pointer;
+    }
+
+    .arrow.left { left: 0; }
+    .arrow.right { right: 0; }
+
+    @media (max-width: 1100px) {
+      .card { flex-basis: calc((100% - 32px) / 3); }
+    }
+
+    @media (max-width: 760px) {
+      .card { flex-basis: calc((100% - 16px) / 2); }
+      .section-head { align-items: flex-start; }
+      .view-btn { padding: 10px 16px; }
+    }
+
+    @media (max-width: 520px) {
+      .card { flex-basis: 100%; }
+      .section-wrap { padding: 14px 12px 10px; }
+      .carousel { padding: 0 18px; }
+      .image-box { height: 210px; }
+    }
+
+    .page-nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .page-nav a {
+      display: inline-block;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: #fff;
+      color: #3d4043;
+      padding: 8px 20px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .page-nav a:hover,
+    .page-nav a.active {
+      background: var(--green);
+      border-color: var(--green);
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <div class="top-strip">
+    <div class="container top-strip-inner">
+      <span>Customer Care</span>
+      <span>|</span>
+      <span>Help Line +8809677601000 (10 AM to 6 PM)</span>
+      <span class="top-links">
+        <a href="#">Login / Registration</a>
+      </span>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="logo-wrap">
+        <div class="logo-mark">G</div>
+        <div class="logo-text">GET TO EASY</div>
+      </div>
+
+      <div class="search-wrap">
+        <input type="text" placeholder="I am shopping for..." />
+        <button>⌕</button>
+      </div>
+
+      <div class="header-actions">
+        <div class="action-item">⇄ Compare <span>0</span></div>
+        <div class="action-item">♡ Wishlist <span>0</span></div>
+        <div class="action-item">🛒 Cart <span>0</span></div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="main-nav">
+    <div class="container nav-items">
+      <a href="#">Ramadan Grocery Package</a>
+      <a href="#">Flash Sales</a>
+      <a href="#">All Brand</a>
+      <a href="#">All categories</a>
+      <a href="gettoeasy-product-homepage/blog.html">BLOG</a>
+    </div>
+  </nav>
+
+  <main class="container page-wrap">
+    <div class="promo-layout">
+      <aside class="category-panel">
+        <ul>
+          <li>Electronics</li>
+          <li>Men's Zone</li>
+          <li>Automobile</li>
+          <li>Women's Zone</li>
+          <li>Kid's Zone</li>
+          <li>Sports &amp; Outdoor</li>
+          <li>Beauty &amp; Care</li>
+          <li>Mobile &amp; Gadget</li>
+          <li>Grocery Item</li>
+          <li>Watches &amp; Accessories</li>
+          <li>Computer &amp; Accessories</li>
+        </ul>
+      </aside>
+
+      <section class="hero-wrap">
+        <div class="hero-copy">
+          <div class="hero-tag">EXPLORE THE</div>
+          <div class="hero-title">LATEST TECHNOLOGY</div>
+          <div class="hero-bangla">স্মার্ট, সাশ্রয়ী ও দ্রুত</div>
+          <div class="hero-brand">GET TO EASY</div>
+          <div class="hero-cta">
+            <span>DOWNLOAD @ GET TO EASY</span>
+            <button>Google Play</button>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="device phone"></div>
+          <div class="device watch"></div>
+          <div class="device buds"></div>
+        </div>
+      </section>
+    </div>
+
+    <div class="mini-category-row" id="mini-categories"></div>
+
+    <div id="catalog"></div>
+  </main>
+
+  <script src="javascript/homepage4.js"></script>
+</body>
+</html>

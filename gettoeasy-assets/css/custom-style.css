@@ -1,0 +1,28 @@
+/*:root {*/
+/*    --primary: #F77B0B;*/
+/*    --hov-primary: #E56F0E;*/
+/*    --soft-primary: rgba(247, 123, 11, 0.15);*/
+/*}*/
+
+/*your custom css goes here*/
+
+.table td, .table th {
+      padding: 0.4rem;
+}
+#tab_default_1 table tr td:first-child{
+    background:#f2f2f2;
+}
+
+/* Category Section CSS by Saima */
+
+.hov-seeAll:hover span{
+    color: #E56F0E;
+}
+
+.aiz-category-menu .sub-cat-menu .first-sub-category a:hover{
+    color: var(--primary) !important; 
+}
+.aiz-category-menu .sub-cat-menu .second-sub-category a:hover{
+    color: var(--primary) !important; 
+    padding-left: 0.25rem; 
+}
