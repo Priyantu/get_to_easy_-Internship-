@@ -19,6 +19,17 @@
 | [`gettoeasy-product-homepage/shop.html`](gettoeasy-product-homepage/shop.html) | Shop and product listing page |
 | [`gettoeasy-product-homepage/product-gallery.html`](gettoeasy-product-homepage/product-gallery.html) | Product gallery page for the shop prototype |
 
+## Main Homepage
+
+The main homepage is [`gettoeasy-assets/homepage.html`](gettoeasy-assets/homepage.html). It presents a Get To Easy online-storefront layout with:
+
+- A header with the store logo, customer-care link and phone number, login/registration link, and product search field
+- Shortcuts for compare, wishlist, and cart, plus navigation for Ramadan grocery packages, flash sales, brands, categories, and the blog
+- Product-category browsing and promotional/product sections for visitors to explore
+- Responsive styling for desktop and mobile screens
+
+The page is a static HTML snapshot, not a complete live e-commerce application. Some links lead to local demo pages in this repository, while some category and promotion links and visual assets still point to the Get To Easy website. Account, cart, wishlist, and checkout actions are not connected to a project backend.
+
 ## Features
 
 - E-commerce storefront and product-focused page layouts
